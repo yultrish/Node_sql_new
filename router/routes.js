@@ -61,6 +61,11 @@ router.delete('/v1/order/:id', (req, res)=> {
     Order.deleteOrder(req, res);
 })
 
+router.delete('/v1/clear-cart/:customer_id', (req, res)=> {
+Order.clearCart(req, res);
+
+})
+
 
 //products
 router.get('/v1/products', (req, res) => {

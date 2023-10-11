@@ -118,6 +118,23 @@ exports.deleteOrder = async (req, res) => {
     }
 };
 
+exports.clearCart = async (req, res) => {
+    try {
+        const {customer_id} = req.params;
+        // Extract customer_id from route parameters
+
+        // Delete all orders for the specified customer
+        await Order.query().where('customer_id', customer_id).delete();
+
+        res.status(200).json({message: 'Cart cleared successfully'});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error: 'Server error'});
+    }
+};
+
+
+
 
 exports.updateOrder = async (req, res) => {
 
